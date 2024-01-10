@@ -1,0 +1,19 @@
+{
+  "name": "solution",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  },
+  "dependencies": {
+    "reset-css": "^5.0.2",
+    "scss": "^0.2.4"
+  }
+}

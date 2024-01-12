@@ -167,6 +167,8 @@
   display: grid;
   place-items: center;
   padding-bottom: 140px;
+  max-width: 100vw;
+  overflow: hidden;
 
   .container {
     display: grid;

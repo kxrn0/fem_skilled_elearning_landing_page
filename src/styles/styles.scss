@@ -1,0 +1,220 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 165px;
+  width: 100%;
+
+  svg {
+    @media (hover: hover) {
+      &:hover {
+        animation: shake var(--duration);
+      }
+    }
+
+    g {
+      fill: var(--holy-blue);
+    }
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 230px 165px;
+  padding-bottom: 250px;
+  width: 100%;
+
+  .image {
+    width: 992px;
+    height: 937px;
+    position: absolute;
+    right: -336px;
+    top: -146px;
+    pointer-events: none;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    .fs-h1 {
+      color: var(--holy-blue);
+      width: 460px;
+      height: 145px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .line {
+        display: flex;
+        position: relative;
+
+        pre {
+          opacity: 0;
+          filter: blur(5px);
+          transform: translateY(-50vh);
+          animation: from-above calc(var(--duration)) forwards;
+          animation-delay: calc(var(--delay) * var(--duration) / 5);
+        }
+
+        .thing {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          animation: fade calc(5 * var(--duration)) forwards;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+
+    .fs-body-1 {
+      color: var(--gray);
+      margin-top: 30px;
+      max-width: 445px;
+    }
+
+    .button-secondary {
+      margin-top: 40px;
+    }
+  }
+}
+
+.main {
+  background: linear-gradient(180deg, #fff 0%, #f0f1ff 100%);
+  display: grid;
+  place-items: center;
+  padding-bottom: 140px;
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 80px;
+    column-gap: 30px;
+    width: fit-content;
+
+    .overlay {
+      backdrop-filter: blur(5px);
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity var(--duration);
+    }
+
+    .card {
+      background-color: white;
+      box-shadow: 0px 25px 50px 0px rgba(6, 22, 141, 0.04);
+      width: 350px;
+      height: 322px;
+      padding: 40px 32px;
+      padding-top: 64px;
+      border-radius: 15px;
+      position: relative;
+
+      .image {
+        position: absolute;
+        inset: 0;
+        border-radius: 10px;
+        transition: transform var(--duration), opacity var(--duration);
+        opacity: 0;
+        pointer-events: none;
+        box-shadow: 0px 25px 50px 0px rgba(6, 22, 141, 0.15);
+      }
+
+      &.intro {
+        background: var(--gradient-one);
+        color: white;
+      }
+
+      &.contentful {
+        @media (hover: hover) {
+          &:hover {
+            .image {
+              transform: translate(var(--x), var(--y)) rotate(var(--deg));
+              opacity: 1;
+            }
+
+            ~ .overlay {
+              opacity: 1;
+            }
+
+            z-index: 2;
+          }
+        }
+      }
+
+      .content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .text {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+
+          .fs-h4 {
+            color: var(--holy-blue);
+          }
+
+          .fs-body-1 {
+            color: var(--gray);
+          }
+        }
+
+        .fs-body-3 {
+          color: var(--pink);
+          text-decoration: none;
+          width: fit-content;
+
+          @media (hover: hover) {
+            position: relative;
+
+            &:hover {
+              &::after {
+                transform: scaleX(1);
+              }
+            }
+
+            &::after {
+              content: "";
+              background-color: var(--pink);
+              width: 100%;
+              height: 2px;
+              position: absolute;
+              top: 100%;
+              left: 0;
+              transition: transform var(--duration);
+              transform: scaleX(0);
+            }
+          }
+        }
+
+        svg {
+          position: absolute;
+          top: -24px;
+          left: 32px;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  background-color: var(--holy-blue);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 165px;
+  
+  svg {
+    g {
+      fill: white;
+    }
+  }
+}

@@ -1,0 +1,238 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@supports (font-variation-settings: normal) {
+  @font-face {
+    font-family: soyjak;
+    src: url("../assets/fonts/jakarta/PlusJakartaSans-VariableFont_wght.ttf");
+    font-weight: 100 1000;
+  }
+}
+
+@supports not (font-variation-settings: normal) {
+  @font-face {
+    font-family: soyjak;
+    src: url("../assets/fonts/jakarta/static/PlusJakartaSans-Medium.ttf");
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: soyjak;
+    src: url("../assets/fonts/jakarta/static/PlusJakartaSans-Bold.ttf");
+    font-weight: 700;
+  }
+
+  @font-face {
+    font-family: soyjak;
+    src: url("../assets/fonts/jakarta/static/PlusJakartaSans-ExtraBold.ttf");
+    font-weight: 800;
+  }
+}
+
+:root {
+  --devil-gray: #666ca3;
+  --holy-blue: #13183f;
+  --gray: #83869a;
+  --pink: #f74780;
+  --light-pink: #ffa7c3;
+  --gradient-one: linear-gradient(180deg, #ff6f48 0.04%, #f02aa6 100%);
+  --gradient-one-bottom: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0.5) 100%
+    ),
+    linear-gradient(180deg, #ff6f48 0%, #f02aa6 100%);
+  --gradient-two: linear-gradient(180deg, #4851ff 0%, #f02aa6 99.92%);
+  --gradient-two-bottom: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0.5) 100%
+    ),
+    linear-gradient(180deg, #4851ff -54.32%, #f02aa6 100%);
+  --duration: 0.33s;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.fs-h1,
+.fs-h2,
+.fs-h3,
+.fs-h4,
+.fs-body-1,
+.fs-body-2,
+.fs-body-3 {
+  font-family: soyjak;
+}
+
+.fs-h1,
+.fs-h2,
+.fs-h3,
+.fs-h4 {
+  font-weight: 800;
+}
+
+.fs-body-1,
+.fs-body-3 {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.fs-h1 {
+  font-size: 56px;
+}
+
+.fs-h2 {
+  font-size: 40px;
+}
+
+.fs-h3 {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.fs-h4 {
+  font-size: 24px;
+}
+
+.fs-body-1 {
+  font-weight: 500;
+}
+
+.fs-body-2 {
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 700;
+}
+
+.fs-body-3 {
+  font-weight: 700;
+}
+
+.button-primary,
+.button-secondary,
+.button-tertiary {
+  color: white;
+  font-family: soyjak;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28px;
+  text-decoration: none;
+  border-radius: 500px;
+}
+
+.button-primary,
+.button-tertiary {
+  padding: 14px 32px;
+}
+
+.button-secondary,
+.button-tertiary {
+  position: relative;
+
+  @media (hover: hover) {
+    &:hover {
+      .false-bottom {
+        opacity: 1;
+      }
+    }
+  }
+
+  .false-bottom {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity var(--duration);
+    border-radius: 500px;
+  }
+
+  .content {
+    position: relative;
+  }
+}
+
+.button-primary {
+  background-color: var(--holy-blue);
+  transition: background-color var(--duration);
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--devil-gray);
+    }
+  }
+}
+
+.button-secondary {
+  background-image: var(--gradient-one);
+  padding: 16px 32px;
+  padding-top: 19px;
+
+  .false-bottom {
+    background-image: var(--gradient-one-bottom);
+  }
+}
+
+.button-tertiary {
+  background-image: var(--gradient-two);
+
+  .false-bottom {
+    background-image: var(--gradient-two-bottom);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0);
+  }
+  15% {
+    transform: rotate(10deg);
+  }
+  30% {
+    transform: rotate(-10deg);
+  }
+  45% {
+    transform: rotate(8deg);
+  }
+  60% {
+    transform: rotate(-8deg);
+  }
+  75% {
+    transform: rotate(4deg);
+  }
+  85% {
+    transform: rotate(-4deg);
+  }
+  92% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes from-above {
+  from {
+    opacity: 0.5;
+    filter: blur(5px);
+    transform: translateY(-50vh);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade {
+  to {
+    opacity: 0;
+  }
+}

@@ -9,11 +9,11 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "sass": "^1.69.7",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
   },
   "dependencies": {
-    "reset-css": "^5.0.2",
-    "scss": "^0.2.4"
+    "reset-css": "^5.0.2"
   }
 }

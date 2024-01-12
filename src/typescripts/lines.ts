@@ -38,7 +38,7 @@ function create_thing(icon: () => string) {
   };
   const velocity = {
     x: random(-velC, velC),
-    y: random(-velC, velC),
+    y: random(-velC, 0),
   };
   const acceleration = { x: 0, y: 0.05 };
   const angle = { value: random(-45, 45), velocity: random(-1, 1) };
@@ -54,6 +54,7 @@ function create_thing(icon: () => string) {
 
   thing.innerHTML = icon()!;
   thing.classList.add("thing");
+  thing.style.left = `${random(60, 100)}%`;
 
   thing.addEventListener("animationend", () => {
     clearInterval(interval);
@@ -64,7 +65,6 @@ function create_thing(icon: () => string) {
 }
 
 function pop(line: HTMLDivElement, type: IconType) {
-  const center = line.querySelector(".firework");
   let icons;
 
   if (type === "budget") {
@@ -95,9 +95,7 @@ function pop(line: HTMLDivElement, type: IconType) {
     ];
   }
 
-  for (let i = 0; i < icons.length; i++) {
-    center?.append(create_thing(icons[i]));
-  }
+  for (let i = 0; i < icons.length; i++) line.append(create_thing(icons[i]));
 }
 
 function init_line(line: HTMLDivElement, preIndex: number, type: IconType) {
@@ -108,8 +106,6 @@ function init_line(line: HTMLDivElement, preIndex: number, type: IconType) {
 
     pre.style.setProperty("--delay", `${index + preIndex}`);
     pre.innerText = char;
-
-    if (index === 11) pre.classList.add("firework");
 
     if (index === text.length - 1) {
       pre.addEventListener("animationend", () => pop(line, type));

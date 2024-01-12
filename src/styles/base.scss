@@ -59,6 +59,7 @@
 
 body {
   overflow-x: hidden;
+  max-width: 100vw;
 }
 
 .fs-h1,
@@ -86,6 +87,12 @@ body {
 
 .fs-h1 {
   font-size: 56px;
+
+  &.scalable {
+    @media screen and (max-width: 1250px) {
+      font-size: 40px;
+    }
+  }
 }
 
 .fs-h2 {
@@ -95,14 +102,34 @@ body {
 .fs-h3 {
   font-size: 32px;
   line-height: 40px;
+
+  &.scalable {
+    @media screen and (max-width: 1250px) {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
 }
 
 .fs-h4 {
   font-size: 24px;
+
+  &.scalable {
+    @media screen and (max-width: 1250px) {
+      font-size: 20px;
+    }
+  }
 }
 
 .fs-body-1 {
   font-weight: 500;
+  
+  &.scalable {
+    @media screen and (max-width: 1250px) {
+      font-size: 16px;
+      line-height: 26px;
+    }
+  }
 }
 
 .fs-body-2 {
@@ -125,11 +152,19 @@ body {
   line-height: 28px;
   text-decoration: none;
   border-radius: 500px;
+
+  @media screen and (max-width: 1250px) {
+    font-size: 16px;
+  }
 }
 
 .button-primary,
 .button-tertiary {
   padding: 14px 32px;
+
+  @media screen and (max-width: 1250px) {
+    padding: 10px 24px;
+  }
 }
 
 .button-secondary,
@@ -176,6 +211,10 @@ body {
 
   .false-bottom {
     background-image: var(--gradient-one-bottom);
+  }
+
+  @media screen and (max-width: 1250px) {
+    padding: 15px 38px;
   }
 }
 
@@ -228,6 +267,34 @@ body {
     opacity: 1;
     filter: blur(0);
     transform: translateY(0);
+  }
+}
+
+@keyframes from-below {
+  from {
+    transform: translateY(50vh);
+    opacity: 0;
+    filter: blur(5px);
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes from-right {
+  from {
+    transform: translate(50vw);
+    opacity: 0;
+    filter: blur(5px);
+  }
+
+  to {
+    transform: translate(0);
+    opacity: 1;
+    filter: blur(0);
   }
 }
 
